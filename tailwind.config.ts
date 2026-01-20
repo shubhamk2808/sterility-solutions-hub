@@ -77,7 +77,7 @@ export default {
         },
         medical: {
           blue: "hsl(var(--medical-blue))",
-          teal: "hsl(var(--medical-teal))",
+          light: "hsl(var(--medical-light-blue))",
           navy: "hsl(var(--medical-navy))",
         },
         surface: {

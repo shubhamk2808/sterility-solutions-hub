@@ -18,17 +18,20 @@
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 12%;
 
-    /* Primary - Medical Blue (from logo) */
+    /* Primary - Dark Blue (from logo) */
     --primary: 214 84% 44%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Soft Blue Gray */
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 215 25% 12%;
+    /* Secondary - Light Blue (from logo gradient) */
+    --secondary: 199 89% 48%;
+    --secondary-foreground: 0 0% 100%;
 
-    /* Accent - Teal (from logo gradient) */
-    --accent: 162 63% 34%;
+    /* Accent - Light Blue variant for accents */
+    --accent: 199 89% 48%;
     --accent-foreground: 0 0% 100%;
+
+    /* Medical Light Blue for gradients */
+    --medical-light: 199 89% 58%;
 
     /* Muted */
     --muted: 210 40% 96%;
@@ -70,7 +73,7 @@
 
     /* Custom BiosteriMed tokens */
     --medical-blue: 214 84% 44%;
-    --medical-teal: 162 63% 34%;
+    --medical-light-blue: 199 89% 48%;
     --medical-navy: 215 25% 12%;
     --surface: 210 40% 98%;
     --surface-hover: 210 40% 95%;
@@ -89,11 +92,13 @@
     --primary: 214 84% 56%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 199 89% 55%;
+    --secondary-foreground: 0 0% 100%;
 
-    --accent: 162 63% 40%;
+    --accent: 199 89% 55%;
     --accent-foreground: 0 0% 100%;
+
+    --medical-light: 199 89% 65%;
 
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
@@ -124,7 +129,7 @@
     --sidebar-ring: 214 84% 56%;
 
     --medical-blue: 214 84% 56%;
-    --medical-teal: 162 63% 40%;
+    --medical-light-blue: 199 89% 55%;
     --medical-navy: 210 40% 98%;
     --surface: 215 25% 12%;
     --surface-hover: 215 25% 15%;
