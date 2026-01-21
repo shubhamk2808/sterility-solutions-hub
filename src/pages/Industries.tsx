@@ -100,7 +100,7 @@ export default function Industries() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-medical-blue/5 via-background to-medical-teal/5">
+      <section className="relative py-20 md:py-28 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -108,7 +108,7 @@ export default function Industries() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <span className="inline-block px-4 py-2 bg-medical-blue/10 text-medical-blue rounded-full text-sm font-medium mb-6">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
               Industries We Serve
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
@@ -141,8 +141,8 @@ export default function Industries() {
               >
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-14 h-14 bg-medical-blue/10 rounded-xl flex items-center justify-center">
-                      <industry.icon className="w-7 h-7 text-medical-blue" />
+                    <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center">
+                      <industry.icon className="w-7 h-7 text-primary" />
                     </div>
                     <h2 className="text-3xl font-bold text-foreground">{industry.title}</h2>
                   </div>
@@ -165,7 +165,7 @@ export default function Industries() {
                       <ul className="space-y-2">
                         {industry.solutions.map((solution, i) => (
                           <li key={i} className="flex items-start gap-2 text-muted-foreground">
-                            <CheckCircle className="w-5 h-5 text-medical-teal flex-shrink-0 mt-0.5" />
+                            <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
                             {solution}
                           </li>
                         ))}
@@ -188,7 +188,7 @@ export default function Industries() {
                     <div className="grid grid-cols-2 gap-3">
                       {industry.products.map((product, i) => (
                         <div key={i} className="bg-white p-4 rounded-lg text-center">
-                          <span className="text-sm font-medium text-medical-blue">{product}</span>
+                          <span className="text-sm font-medium text-primary">{product}</span>
                         </div>
                       ))}
                     </div>
@@ -219,8 +219,8 @@ export default function Industries() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyChoose.map((item, index) => (
               <AnimatedCard key={index} delay={index * 0.1} className="bg-white p-6 rounded-xl text-center">
-                <div className="w-12 h-12 bg-medical-blue/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-6 h-6 text-medical-blue" />
+                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <item.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h4 className="font-semibold text-foreground mb-2">{item.title}</h4>
                 <p className="text-sm text-muted-foreground">{item.description}</p>

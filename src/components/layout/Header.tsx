@@ -34,7 +34,15 @@ const navigation: NavItem[] = [
     ],
   },
   { label: "Industries", href: "/industries" },
-  { label: "Quality", href: "/quality" },
+  {
+    label: "Resources",
+    href: "/resources",
+    children: [
+      { label: "Technical Library", href: "/resources", description: "Brochures, datasheets, and documentation" },
+      { label: "FAQ", href: "/faq", description: "Frequently asked questions" },
+      { label: "Quality & Certifications", href: "/quality", description: "ISO standards and compliance" },
+    ],
+  },
   { label: "Contact", href: "/contact" },
 ];
 

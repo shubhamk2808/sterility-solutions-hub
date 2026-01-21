@@ -49,19 +49,19 @@ export default function BiologicalIndicators() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-20 md:py-24 bg-gradient-to-br from-medical-teal/10 via-background to-medical-blue/5">
+      <section className="relative py-20 md:py-24 bg-gradient-to-br from-secondary/10 via-background to-primary/5">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Link to="/products" className="inline-flex items-center text-medical-blue hover:underline mb-4">
+            <Link to="/products" className="inline-flex items-center text-primary hover:underline mb-4">
               ← Back to Products
             </Link>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-14 h-14 bg-medical-teal/10 rounded-xl flex items-center justify-center">
-                <Microscope className="w-7 h-7 text-medical-teal" />
+              <div className="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center">
+                <Microscope className="w-7 h-7 text-secondary" />
               </div>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -96,10 +96,10 @@ export default function BiologicalIndicators() {
               <AnimatedCard key={index} delay={index * 0.1} className="bg-slate-50 p-6 rounded-xl">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <div className="text-sm text-medical-teal font-medium mb-1">SKU: {product.sku}</div>
+                    <div className="text-sm text-secondary font-medium mb-1">SKU: {product.sku}</div>
                     <h3 className="text-xl font-semibold text-foreground">{product.name}</h3>
                   </div>
-                  <span className="px-3 py-1 bg-medical-teal/10 text-medical-teal rounded-full text-xs">
+                  <span className="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-xs">
                     {product.organism}
                   </span>
                 </div>
@@ -107,7 +107,7 @@ export default function BiologicalIndicators() {
                 <ul className="space-y-2 mb-6">
                   {product.features.map((feature, i) => (
                     <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle className="w-4 h-4 text-medical-teal" />
+                      <CheckCircle className="w-4 h-4 text-secondary" />
                       {feature}
                     </li>
                   ))}
@@ -141,11 +141,11 @@ export default function BiologicalIndicators() {
                 <div className="space-y-2">
                   <div>
                     <span className="text-sm text-muted-foreground">Temperature:</span>
-                    <span className="ml-2 font-medium text-medical-teal">{item.temp}</span>
+                    <span className="ml-2 font-medium text-secondary">{item.temp}</span>
                   </div>
                   <div>
                     <span className="text-sm text-muted-foreground">Duration:</span>
-                    <span className="ml-2 font-medium text-medical-teal">{item.time}</span>
+                    <span className="ml-2 font-medium text-secondary">{item.time}</span>
                   </div>
                 </div>
               </AnimatedCard>

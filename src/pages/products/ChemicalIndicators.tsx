@@ -49,19 +49,19 @@ export default function ChemicalIndicators() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-20 md:py-24 bg-gradient-to-br from-medical-blue/10 via-background to-medical-teal/5">
+      <section className="relative py-20 md:py-24 bg-gradient-to-br from-primary/10 via-background to-secondary/5">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Link to="/products" className="inline-flex items-center text-medical-blue hover:underline mb-4">
+            <Link to="/products" className="inline-flex items-center text-primary hover:underline mb-4">
               ← Back to Products
             </Link>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-14 h-14 bg-medical-blue/10 rounded-xl flex items-center justify-center">
-                <FlaskConical className="w-7 h-7 text-medical-blue" />
+              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center">
+                <FlaskConical className="w-7 h-7 text-primary" />
               </div>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -99,13 +99,13 @@ export default function ChemicalIndicators() {
                     <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
                   </div>
                   <div className="md:col-span-3 p-6">
-                    <div className="text-sm text-medical-blue font-medium mb-1">SKU: {product.sku}</div>
+                    <div className="text-sm text-primary font-medium mb-1">SKU: {product.sku}</div>
                     <h3 className="text-xl font-semibold text-foreground mb-2">{product.name}</h3>
                     <p className="text-muted-foreground mb-4">{product.description}</p>
                     <ul className="space-y-2 mb-4">
                       {product.features.map((feature, i) => (
                         <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <CheckCircle className="w-4 h-4 text-medical-teal" />
+                          <CheckCircle className="w-4 h-4 text-secondary" />
                           {feature}
                         </li>
                       ))}
@@ -137,7 +137,7 @@ export default function ChemicalIndicators() {
             {specifications.map((spec, index) => (
               <AnimatedCard key={index} delay={index * 0.1} className="bg-white p-6 rounded-xl text-center">
                 <div className="text-sm text-muted-foreground mb-1">{spec.label}</div>
-                <div className="font-semibold text-medical-blue">{spec.value}</div>
+                <div className="font-semibold text-primary">{spec.value}</div>
               </AnimatedCard>
             ))}
           </div>

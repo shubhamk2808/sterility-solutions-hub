@@ -65,7 +65,7 @@ export default function Products() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-medical-blue/5 via-background to-medical-teal/5">
+      <section className="relative py-20 md:py-28 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -73,7 +73,7 @@ export default function Products() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <span className="inline-block px-4 py-2 bg-medical-blue/10 text-medical-blue rounded-full text-sm font-medium mb-6">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
               Product Catalog
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
@@ -109,8 +109,8 @@ export default function Products() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {features.map((feature, index) => (
               <div key={index} className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-medical-blue/10 rounded-lg flex items-center justify-center">
-                  <feature.icon className="w-5 h-5 text-medical-blue" />
+                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <feature.icon className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <div className="font-medium text-foreground text-sm">{feature.title}</div>
@@ -153,7 +153,7 @@ export default function Products() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredProducts.map((product, index) => (
               <AnimatedCard key={index} delay={index * 0.1} className="bg-slate-50 p-6 rounded-xl">
-                <div className="text-sm text-medical-blue font-medium mb-2">{product.category}</div>
+                <div className="text-sm text-primary font-medium mb-2">{product.category}</div>
                 <h4 className="font-semibold text-foreground mb-2">{product.name}</h4>
                 <div className="text-sm text-muted-foreground mb-4">SKU: {product.sku}</div>
                 <div className="flex gap-2">
@@ -174,7 +174,7 @@ export default function Products() {
       <section className="section-padding bg-slate-50">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-8">
-            <AnimatedCard className="bg-gradient-to-br from-medical-blue to-medical-blue/80 text-white p-8 rounded-2xl">
+            <AnimatedCard className="bg-gradient-to-br from-primary to-primary/80 text-white p-8 rounded-2xl">
               <Download className="w-10 h-10 mb-4" />
               <h3 className="text-2xl font-bold mb-2">Download Catalog</h3>
               <p className="text-white/80 mb-6">
@@ -184,7 +184,7 @@ export default function Products() {
                 Download PDF Catalog
               </Button>
             </AnimatedCard>
-            <AnimatedCard delay={0.1} className="bg-gradient-to-br from-medical-teal to-medical-teal/80 text-white p-8 rounded-2xl">
+            <AnimatedCard delay={0.1} className="bg-gradient-to-br from-secondary to-secondary/80 text-white p-8 rounded-2xl">
               <Phone className="w-10 h-10 mb-4" />
               <h3 className="text-2xl font-bold mb-2">Need Assistance?</h3>
               <p className="text-white/80 mb-6">
