@@ -18,6 +18,8 @@ const footerLinks = {
     { label: "About Us", href: "/about" },
     { label: "Quality & Certifications", href: "/quality" },
     { label: "Industries We Serve", href: "/industries" },
+    { label: "Resources", href: "/resources" },
+    { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "/contact" },
   ],
   legal: [
