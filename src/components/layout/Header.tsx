@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { GlobalSearch } from "@/components/ui/GlobalSearch";
 import logo from "@/assets/logo-biosterimed.png";
 
 interface NavItem {
@@ -21,6 +22,7 @@ const navigation: NavItem[] = [
       { label: "EO Sterilization", href: "/services/eo-sterilization", description: "Ethylene Oxide sterilization for heat-sensitive devices" },
       { label: "Steam Sterilization", href: "/services/steam-sterilization", description: "High-pressure steam autoclave sterilization" },
       { label: "Gamma Irradiation", href: "/services/gamma-irradiation", description: "Gamma ray sterilization for bulk processing" },
+      { label: "Compare Methods", href: "/services/compare", description: "Side-by-side comparison tool" },
     ],
   },
   {
@@ -139,8 +141,9 @@ export function Header() {
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* Search & CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
+            <GlobalSearch variant="header" />
             <Button asChild>
               <Link to="/contact">Request a Quote</Link>
             </Button>

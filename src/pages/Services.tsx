@@ -1,14 +1,20 @@
 import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { ServiceCard } from "@/components/ui/ServiceCard";
 import { CTASection } from "@/components/ui/CTASection";
 import { AnimatedCard } from "@/components/ui/AnimatedCard";
+import { ServiceComparisonTool } from "@/components/ui/ServiceComparisonTool";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Zap, Flame, Radiation, Shield, Clock, FileCheck, Microscope, Award } from "lucide-react";
+import { Wind, Flame, Radiation, Shield, Clock, FileCheck, Microscope, Award, ArrowRight, CheckCircle } from "lucide-react";
+
+import eoImage from "@/assets/services/eo-sterilization.jpg";
+import steamImage from "@/assets/services/steam-sterilization.jpg";
+import gammaImage from "@/assets/services/gamma-irradiation.jpg";
 
 const services = [
   {
-    icon: Zap,
+    icon: Wind,
     title: "EO Sterilization",
     description: "Ethylene Oxide sterilization for heat and moisture-sensitive medical devices. Ideal for complex geometries and electronic components.",
     features: [
@@ -17,7 +23,10 @@ const services = [
       "Validated cycle development",
       "Complete residual testing"
     ],
-    href: "/services/eo-sterilization"
+    href: "/services/eo-sterilization",
+    image: eoImage,
+    color: "from-blue-500 to-cyan-500",
+    bgColor: "bg-blue-50 dark:bg-blue-950/30"
   },
   {
     icon: Flame,
@@ -29,7 +38,10 @@ const services = [
       "Environmentally friendly",
       "Cost-effective processing"
     ],
-    href: "/services/steam-sterilization"
+    href: "/services/steam-sterilization",
+    image: steamImage,
+    color: "from-orange-500 to-red-500",
+    bgColor: "bg-orange-50 dark:bg-orange-950/30"
   },
   {
     icon: Radiation,
@@ -41,7 +53,10 @@ const services = [
       "Suitable for final packaging",
       "Dose mapping validation"
     ],
-    href: "/services/gamma-irradiation"
+    href: "/services/gamma-irradiation",
+    image: gammaImage,
+    color: "from-purple-500 to-pink-500",
+    bgColor: "bg-purple-50 dark:bg-purple-950/30"
   }
 ];
 
@@ -79,7 +94,7 @@ export default function Services() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-medical-blue/5 via-background to-medical-teal/5">
+      <section className="relative py-20 md:py-28 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -87,7 +102,7 @@ export default function Services() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <span className="inline-block px-4 py-2 bg-medical-blue/10 text-medical-blue rounded-full text-sm font-medium mb-6">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
               Our Services
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
@@ -102,28 +117,79 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="section-padding bg-white">
+      {/* Services Grid - Enhanced with images */}
+      <section className="section-padding bg-background">
         <div className="container-custom">
           <SectionHeader
             badge="Sterilization Methods"
             title="Choose the Right Solution"
             subtitle="Each sterilization method offers unique advantages. Our experts will help you select the optimal process for your products."
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <ServiceCard
+              <motion.div
                 key={index}
-                {...service}
-                delay={index * 0.1}
-              />
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all duration-300"
+              >
+                {/* Service Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${service.color} flex items-center justify-center`}>
+                      <service.icon className="h-6 w-6 text-white" />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Service Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-foreground mb-2">{service.title}</h3>
+                  <p className="text-muted-foreground mb-4 line-clamp-2">{service.description}</p>
+                  
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-sm">
+                        <CheckCircle className="h-4 w-4 text-primary" />
+                        <span className="text-foreground">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <Button asChild variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <Link to={service.href} className="flex items-center justify-center gap-2">
+                      Learn More <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Service Comparison Tool */}
+      <section className="section-padding bg-surface">
+        <div className="container-custom">
+          <SectionHeader
+            badge="Compare Methods"
+            title="Side-by-Side Comparison"
+            subtitle="Compare sterilization technologies to find the best fit for your products."
+          />
+          <ServiceComparisonTool maxFeatures={8} />
+        </div>
+      </section>
+
       {/* Process Steps */}
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-background">
         <div className="container-custom">
           <SectionHeader
             badge="Our Process"
@@ -132,19 +198,19 @@ export default function Services() {
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {processSteps.map((step, index) => (
-              <AnimatedCard key={index} delay={index * 0.1} className="relative bg-white p-6 rounded-xl">
-                <div className="text-5xl font-bold text-medical-blue/10 absolute top-4 right-4">
+              <AnimatedCard key={index} delay={index * 0.1} className="relative bg-card p-6 rounded-xl border border-border">
+                <div className="text-5xl font-bold text-primary/10 absolute top-4 right-4">
                   {step.step}
                 </div>
                 <div className="relative z-10">
-                  <div className="w-10 h-10 bg-medical-blue text-white rounded-lg flex items-center justify-center font-bold mb-4">
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary text-primary-foreground rounded-lg flex items-center justify-center font-bold mb-4">
                     {step.step}
                   </div>
                   <h4 className="text-xl font-semibold text-foreground mb-2">{step.title}</h4>
                   <p className="text-muted-foreground">{step.description}</p>
                 </div>
                 {index < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-medical-blue/30" />
+                  <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-primary/30" />
                 )}
               </AnimatedCard>
             ))}
@@ -153,7 +219,7 @@ export default function Services() {
       </section>
 
       {/* Capabilities */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-surface">
         <div className="container-custom">
           <SectionHeader
             badge="Why Choose Us"
@@ -162,9 +228,9 @@ export default function Services() {
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {capabilities.map((cap, index) => (
-              <AnimatedCard key={index} delay={index * 0.1} className="text-center p-6 bg-slate-50 rounded-xl">
-                <div className="w-14 h-14 bg-medical-blue/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <cap.icon className="w-7 h-7 text-medical-blue" />
+              <AnimatedCard key={index} delay={index * 0.1} className="text-center p-6 bg-card rounded-xl border border-border hover:border-primary/30 transition-all duration-300">
+                <div className="w-14 h-14 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <cap.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
                 <h4 className="font-semibold text-foreground mb-2">{cap.label}</h4>
                 <p className="text-sm text-muted-foreground">{cap.description}</p>
@@ -175,24 +241,24 @@ export default function Services() {
       </section>
 
       {/* Compliance Banner */}
-      <section className="py-12 bg-gradient-to-r from-medical-blue to-medical-teal">
+      <section className="py-12 bg-gradient-to-r from-primary to-secondary">
         <div className="container-custom">
-          <div className="flex flex-wrap items-center justify-center gap-8 text-white">
+          <div className="flex flex-wrap items-center justify-center gap-8 text-primary-foreground">
             <div className="flex items-center gap-3">
               <Award className="w-8 h-8" />
               <span className="font-medium">ISO 13485</span>
             </div>
-            <div className="w-px h-8 bg-white/30 hidden sm:block" />
+            <div className="w-px h-8 bg-primary-foreground/30 hidden sm:block" />
             <div className="flex items-center gap-3">
               <Award className="w-8 h-8" />
               <span className="font-medium">ISO 11135</span>
             </div>
-            <div className="w-px h-8 bg-white/30 hidden sm:block" />
+            <div className="w-px h-8 bg-primary-foreground/30 hidden sm:block" />
             <div className="flex items-center gap-3">
               <Award className="w-8 h-8" />
               <span className="font-medium">ISO 17665</span>
             </div>
-            <div className="w-px h-8 bg-white/30 hidden sm:block" />
+            <div className="w-px h-8 bg-primary-foreground/30 hidden sm:block" />
             <div className="flex items-center gap-3">
               <Award className="w-8 h-8" />
               <span className="font-medium">FDA Registered</span>

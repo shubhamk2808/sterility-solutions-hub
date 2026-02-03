@@ -12,6 +12,8 @@ import {
   Shield, Beaker, Package, FileCheck 
 } from "lucide-react";
 
+import eoImage from "@/assets/services/eo-sterilization.jpg";
+
 const benefits = [
   "Low-temperature processing (37-63°C) - ideal for heat-sensitive materials",
   "Excellent material compatibility with most polymers and plastics",
@@ -39,31 +41,35 @@ const compatibleMaterials = [
 export default function EOSterilization() {
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-primary/10 via-background to-secondary/5">
-        <div className="container-custom">
+      {/* Hero with Image */}
+      <section className="relative py-20 md:py-28 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={eoImage} alt="EO Sterilization Facility" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/50" />
+        </div>
+        <div className="container-custom relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <Link to="/services" className="inline-flex items-center text-primary hover:underline mb-4">
+              <Link to="/services" className="inline-flex items-center text-background/80 hover:text-background mb-4">
                 ← Back to Services
               </Link>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center">
-                  <Zap className="w-7 h-7 text-primary" />
+                <div className="w-14 h-14 bg-background/20 backdrop-blur rounded-xl flex items-center justify-center">
+                  <Zap className="w-7 h-7 text-background" />
                 </div>
-                <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                <span className="px-3 py-1 bg-background/20 backdrop-blur text-background rounded-full text-sm font-medium">
                   ISO 11135 Compliant
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-background mb-6">
                 Ethylene Oxide (EO){" "}
-                <span className="text-gradient">Sterilization</span>
+                <span className="text-secondary">Sterilization</span>
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+              <p className="text-lg text-background/80 leading-relaxed mb-8 max-w-xl">
                 The preferred method for sterilizing heat and moisture-sensitive medical devices. 
                 Our validated EO processes ensure complete sterility while preserving product integrity 
                 and functionality.
@@ -72,7 +78,7 @@ export default function EOSterilization() {
                 <Button asChild size="lg">
                   <Link to="/contact">Request Quote <ArrowRight className="ml-2 w-4 h-4" /></Link>
                 </Button>
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" className="border-background/30 text-background hover:bg-background/10">
                   <Download className="mr-2 w-4 h-4" /> Download Datasheet
                 </Button>
               </div>
@@ -81,9 +87,9 @@ export default function EOSterilization() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-card rounded-2xl shadow-xl p-8 border border-border"
+              className="bg-background/95 backdrop-blur rounded-2xl shadow-xl p-8 border border-border"
             >
-              <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
+              <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-foreground">
                 <Shield className="w-5 h-5 text-primary" />
                 Key Benefits
               </h3>
