@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
+import Compare from "./pages/Compare";
 import EOSterilization from "./pages/services/EOSterilization";
 import SteamSterilization from "./pages/services/SteamSterilization";
 import GammaIrradiation from "./pages/services/GammaIrradiation";
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/compare" element={<Compare />} />
           <Route path="/services/eo-sterilization" element={<EOSterilization />} />
           <Route path="/services/steam-sterilization" element={<SteamSterilization />} />
           <Route path="/services/gamma-irradiation" element={<GammaIrradiation />} />

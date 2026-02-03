@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Clock, Headphones, FileCheck, CheckCircle, Zap, Building2, Factory, FlaskConical, Microscope, Wind, Flame, Radiation, Award, Users, Globe } from "lucide-react";
+import { ArrowRight, Shield, Clock, Headphones, FileCheck, CheckCircle, Zap, Building2, Factory, FlaskConical, Microscope, Wind, Flame, Radiation, Award, Users, Globe, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -11,8 +11,14 @@ import { TrustBadges } from "@/components/ui/TrustBadge";
 import { CTASection } from "@/components/ui/CTASection";
 import { SterilizationSelector } from "@/components/ui/SterilizationSelector";
 import { TestimonialsSection } from "@/components/ui/TestimonialCard";
+import { ServiceComparisonTool } from "@/components/ui/ServiceComparisonTool";
+import { ClientLogosSection, LogoMarquee } from "@/components/ui/ClientLogosSection";
+import { GlobalSearch } from "@/components/ui/GlobalSearch";
 
-import heroImage from "@/assets/hero-medical-facility.jpg";
+import heroImage from "@/assets/hero-sterilization-lab.jpg";
+import eoImage from "@/assets/services/eo-sterilization.jpg";
+import steamImage from "@/assets/services/steam-sterilization.jpg";
+import gammaImage from "@/assets/services/gamma-irradiation.jpg";
 import chemicalIndicators from "@/assets/products/chemical-indicators.jpg";
 import biologicalIndicators from "@/assets/products/biological-indicators.jpg";
 import bowieDick from "@/assets/products/bowie-dick.jpg";
@@ -25,6 +31,7 @@ const services = [
     description: "Ethylene Oxide sterilization for heat and moisture-sensitive medical devices with complete regulatory compliance.",
     features: ["Low temperature process", "Material compatibility", "FDA compliant"],
     href: "/services/eo-sterilization",
+    image: eoImage,
   },
   {
     icon: Flame,
@@ -32,6 +39,7 @@ const services = [
     description: "High-pressure saturated steam autoclave sterilization for surgical instruments and reusable medical equipment.",
     features: ["Rapid turnaround", "Cost effective", "Validated cycles"],
     href: "/services/steam-sterilization",
+    image: steamImage,
   },
   {
     icon: Radiation,
@@ -39,6 +47,7 @@ const services = [
     description: "Gamma ray sterilization for bulk processing of single-use medical devices and pharmaceutical products.",
     features: ["High penetration", "No residues", "Bulk processing"],
     href: "/services/gamma-irradiation",
+    image: gammaImage,
   },
 ];
 
@@ -83,10 +92,10 @@ const whyChooseUs = [
 ];
 
 const industries = [
-  { icon: Building2, title: "Hospitals & Clinics", href: "/industries" },
-  { icon: Factory, title: "Device Manufacturers", href: "/industries" },
-  { icon: FlaskConical, title: "Pharmaceuticals", href: "/industries" },
-  { icon: Microscope, title: "Research Labs", href: "/industries" },
+  { icon: Building2, title: "Hospitals & Clinics", href: "/industries", description: "CSSD and SPD solutions" },
+  { icon: Factory, title: "Device Manufacturers", href: "/industries", description: "Contract sterilization" },
+  { icon: FlaskConical, title: "Pharmaceuticals", href: "/industries", description: "Pharmaceutical-grade processing" },
+  { icon: Microscope, title: "Research Labs", href: "/industries", description: "Laboratory sterilization" },
 ];
 
 const clientLogos = [
@@ -107,7 +116,7 @@ export default function Index() {
         </div>
         
         <div className="container-custom relative z-10 py-20">
-          <div className="max-w-2xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -117,18 +126,18 @@ export default function Index() {
                 <TrustBadges variant="compact" />
               </div>
               
-              <h1 className="text-display-1 md:text-[4.5rem] leading-tight text-background mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-background mb-6">
                 Certified Medical{" "}
                 <span className="text-gradient">Sterilization</span>{" "}
                 Services & Products
               </h1>
               
-              <p className="text-body-lg text-background/80 mb-8 max-w-xl">
+              <p className="text-lg text-background/80 mb-8 max-w-xl">
                 Ensuring sterility assurance and regulatory compliance for healthcare organizations 
                 through certified sterilization services and validated products worldwide.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Button asChild size="lg" className="text-base">
                   <Link to="/contact" className="flex items-center gap-2">
                     Request a Quote <ArrowRight className="h-5 w-5" />
@@ -137,6 +146,41 @@ export default function Index() {
                 <Button asChild variant="outline" size="lg" className="text-base border-background/30 text-background hover:bg-background/10">
                   <Link to="/services">View Our Services</Link>
                 </Button>
+              </div>
+
+              {/* Search bar in hero */}
+              <div className="hidden md:block max-w-lg">
+                <GlobalSearch variant="standalone" />
+              </div>
+            </motion.div>
+
+            {/* Hero Stats Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="hidden lg:block"
+            >
+              <div className="bg-background/10 backdrop-blur-lg rounded-3xl p-8 border border-background/20">
+                <div className="grid grid-cols-2 gap-6">
+                  {[
+                    { value: "25+", label: "Years Experience" },
+                    { value: "99%", label: "Client Satisfaction" },
+                    { value: "10M+", label: "Products Sterilized" },
+                    { value: "24/7", label: "Expert Support" },
+                  ].map((stat, index) => (
+                    <motion.div
+                      key={stat.label}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+                      className="text-center p-4"
+                    >
+                      <div className="text-3xl font-bold text-background mb-1">{stat.value}</div>
+                      <div className="text-sm text-background/70">{stat.label}</div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>
@@ -162,27 +206,11 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Trust Badges Section - Enhanced */}
-      <section className="py-12 bg-surface border-y border-border">
-        <div className="container-custom">
-          <TrustBadges />
-        </div>
-      </section>
+      {/* Logo Marquee - Client Trust */}
+      <LogoMarquee />
 
-      {/* Sterilization Method Selector - New Interactive Section */}
-      <section className="section-padding bg-gradient-to-b from-background to-surface">
-        <div className="container-custom">
-          <SectionHeader
-            badge="Find Your Solution"
-            title="Sterilization Method Selector"
-            subtitle="Answer a few questions about your product to find the optimal sterilization method for your needs."
-          />
-          <SterilizationSelector />
-        </div>
-      </section>
-
-      {/* Services Section - Enhanced cards */}
-      <section className="section-padding bg-surface">
+      {/* Services Section - Enhanced with images */}
+      <section className="section-padding bg-background">
         <div className="container-custom">
           <SectionHeader
             badge="Our Services"
@@ -190,9 +218,52 @@ export default function Index() {
             subtitle="Industry-leading sterilization services tailored to your specific requirements, backed by ISO certifications and regulatory compliance."
           />
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <ServiceCard key={service.title} {...service} delay={index * 0.1} />
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all duration-300"
+              >
+                {/* Service Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                      <service.icon className="h-6 w-6 text-primary-foreground" />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Service Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-foreground mb-2">{service.title}</h3>
+                  <p className="text-muted-foreground mb-4 line-clamp-2">{service.description}</p>
+                  
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-sm">
+                        <CheckCircle className="h-4 w-4 text-primary" />
+                        <span className="text-foreground">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <Button asChild variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <Link to={service.href} className="flex items-center justify-center gap-2">
+                      Learn More <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </motion.div>
             ))}
           </div>
           
@@ -203,12 +274,24 @@ export default function Index() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-center mt-10"
           >
-            <Button asChild variant="outline" size="lg">
+            <Button asChild size="lg">
               <Link to="/services" className="flex items-center gap-2">
                 View All Services <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Service Comparison Tool - New Section */}
+      <section className="section-padding bg-surface">
+        <div className="container-custom">
+          <SectionHeader
+            badge="Compare Methods"
+            title="Find the Right Sterilization Method"
+            subtitle="Compare sterilization technologies side-by-side to determine the best solution for your products and materials."
+          />
+          <ServiceComparisonTool maxFeatures={6} />
         </div>
       </section>
 
@@ -229,7 +312,19 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Why Choose Us - Redesigned */}
+      {/* Sterilization Method Selector - Interactive Section */}
+      <section className="section-padding bg-gradient-to-b from-surface to-background">
+        <div className="container-custom">
+          <SectionHeader
+            badge="Find Your Solution"
+            title="Sterilization Method Selector"
+            subtitle="Answer a few questions about your product to find the optimal sterilization method for your needs."
+          />
+          <SterilizationSelector />
+        </div>
+      </section>
+
+      {/* Why Choose Us - Redesigned with icons */}
       <section className="section-padding bg-surface">
         <div className="container-custom">
           <SectionHeader
@@ -264,8 +359,11 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Testimonials Section - New */}
+      {/* Testimonials Section */}
       <TestimonialsSection />
+
+      {/* Certifications Section */}
+      <ClientLogosSection variant="certifications" />
 
       {/* Statistics - Enhanced */}
       <section className="section-padding bg-gradient-to-br from-primary via-primary to-secondary text-primary-foreground relative overflow-hidden">
@@ -274,6 +372,12 @@ export default function Index() {
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl" />
         </div>
         <div className="container-custom relative z-10">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Trusted by Healthcare Leaders Worldwide</h2>
+            <p className="text-primary-foreground/80 max-w-2xl mx-auto">
+              Our track record speaks for itself. We've helped thousands of organizations achieve and maintain sterility assurance.
+            </p>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <StatCounter value={25} suffix="+" label="Years Experience" />
             <StatCounter value={10000} suffix="+" label="Cycles Completed" />
@@ -308,7 +412,8 @@ export default function Index() {
                   <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                     <industry.icon className="h-8 w-8 text-primary-foreground" />
                   </div>
-                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">{industry.title}</h3>
+                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors mb-1">{industry.title}</h3>
+                  <p className="text-sm text-muted-foreground">{industry.description}</p>
                 </Link>
               </motion.div>
             ))}
