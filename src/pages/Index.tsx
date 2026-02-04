@@ -108,102 +108,90 @@ const clientLogos = [
 export default function Index() {
   return (
     <Layout>
-      {/* Hero Section - Enhanced with better visual hierarchy */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      {/* Hero Section - Image-First Design */}
+      <section className="relative min-h-[85vh] flex flex-col overflow-hidden">
+        {/* Full Hero Image - Visible and Prominent */}
         <div className="absolute inset-0">
-          <img src={heroImage} alt="Medical sterilization facility" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/40" />
+          <img 
+            src={heroImage} 
+            alt="Professional medical sterilization facility with advanced equipment" 
+            className="w-full h-full object-cover object-center" 
+          />
+          {/* Subtle gradient overlay - less blocking */}
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-transparent to-transparent lg:from-foreground/60" />
         </div>
         
-        <div className="container-custom relative z-10 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="mb-6">
-                <TrustBadges variant="compact" />
-              </div>
-              
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-background mb-6">
-                Certified Medical{" "}
-                <span className="text-gradient">Sterilization</span>{" "}
-                Services & Products
-              </h1>
-              
-              <p className="text-lg text-background/80 mb-8 max-w-xl">
-                Ensuring sterility assurance and regulatory compliance for healthcare organizations 
-                through certified sterilization services and validated products worldwide.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Button asChild size="lg" className="text-base">
-                  <Link to="/contact" className="flex items-center gap-2">
-                    Request a Quote <ArrowRight className="h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="text-base border-background/30 text-background hover:bg-background/10">
-                  <Link to="/services">View Our Services</Link>
-                </Button>
-              </div>
+        {/* Content positioned at bottom-left */}
+        <div className="container-custom relative z-10 mt-auto pb-16 pt-32">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl"
+          >
+            <div className="mb-4">
+              <TrustBadges variant="compact" />
+            </div>
+            
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-background mb-4">
+              Certified Medical{" "}
+              <span className="text-gradient">Sterilization</span>{" "}
+              Services & Products
+            </h1>
+            
+            <p className="text-base md:text-lg text-background/90 mb-6 max-w-xl">
+              Ensuring sterility assurance and regulatory compliance for healthcare organizations 
+              through certified sterilization services and validated products worldwide.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-3 mb-6">
+              <Button asChild size="lg" className="text-base">
+                <Link to="/contact" className="flex items-center gap-2">
+                  Request a Quote <ArrowRight className="h-5 w-5" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="text-base border-background/40 text-background hover:bg-background/10">
+                <Link to="/services">View Our Services</Link>
+              </Button>
+            </div>
 
-              {/* Search bar in hero */}
-              <div className="hidden md:block max-w-lg">
-                <GlobalSearch variant="standalone" />
-              </div>
-            </motion.div>
-
-            {/* Hero Stats Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="hidden lg:block"
-            >
-              <div className="bg-background/10 backdrop-blur-lg rounded-3xl p-8 border border-background/20">
-                <div className="grid grid-cols-2 gap-6">
-                  {[
-                    { value: "25+", label: "Years Experience" },
-                    { value: "99%", label: "Client Satisfaction" },
-                    { value: "10M+", label: "Products Sterilized" },
-                    { value: "24/7", label: "Expert Support" },
-                  ].map((stat, index) => (
-                    <motion.div
-                      key={stat.label}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                      className="text-center p-4"
-                    >
-                      <div className="text-3xl font-bold text-background mb-1">{stat.value}</div>
-                      <div className="text-sm text-background/70">{stat.label}</div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
+            {/* Search bar */}
+            <div className="hidden md:block max-w-md">
+              <GlobalSearch variant="standalone" />
+            </div>
+          </motion.div>
         </div>
-        
-        {/* Floating trust indicators */}
-        <div className="absolute bottom-8 left-0 right-0 z-10 hidden lg:block">
-          <div className="container-custom">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex gap-6"
-            >
-              {clientLogos.map((item, index) => (
-                <div key={index} className="flex items-center gap-2 text-background/70">
-                  <item.icon className="h-5 w-5" />
-                  <span className="text-sm font-medium">{item.name}</span>
-                </div>
+
+        {/* Stats Bar at Bottom - Full Width */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="relative z-10 bg-foreground/80 backdrop-blur-md border-t border-background/10"
+        >
+          <div className="container-custom py-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+              {[
+                { value: "25+", label: "Years Experience" },
+                { value: "99%", label: "Client Satisfaction" },
+                { value: "10M+", label: "Products Sterilized" },
+                { value: "24/7", label: "Expert Support" },
+              ].map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                  className="text-center"
+                >
+                  <div className="text-xl md:text-2xl font-bold text-background">{stat.value}</div>
+                  <div className="text-xs md:text-sm text-background/70">{stat.label}</div>
+                </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Logo Marquee - Client Trust */}
