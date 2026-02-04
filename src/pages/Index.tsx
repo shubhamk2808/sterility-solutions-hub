@@ -15,7 +15,7 @@ import { ServiceComparisonTool } from "@/components/ui/ServiceComparisonTool";
 import { ClientLogosSection, LogoMarquee } from "@/components/ui/ClientLogosSection";
 import { GlobalSearch } from "@/components/ui/GlobalSearch";
 
-import heroImage from "@/assets/hero-sterilization-lab.jpg";
+import heroImage from "@/assets/hero-medical-facility.jpg";
 import eoImage from "@/assets/services/eo-sterilization.jpg";
 import steamImage from "@/assets/services/steam-sterilization.jpg";
 import gammaImage from "@/assets/services/gamma-irradiation.jpg";
