@@ -62,7 +62,7 @@ export function CTASection({
                 asChild 
                 variant={variant === "gradient" ? "outline" : "secondary"} 
                 size="lg"
-                className={variant === "gradient" ? "border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" : ""}
+                className={variant === "gradient" ? "border-white/40 text-white hover:bg-white/20 hover:text-white" : ""}
               >
                 <Link to={secondaryCTA.href} className="flex items-center gap-2">
                   {secondaryCTA.download && <Download className="h-4 w-4" />}
