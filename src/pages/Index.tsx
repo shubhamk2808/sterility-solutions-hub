@@ -1,4 +1,3 @@
-// Homepage - BiosteriMed
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Clock, Headphones, FileCheck, CheckCircle, Zap, Building2, Factory, FlaskConical, Microscope, Wind, Flame, Radiation, Award, Users, Globe } from "lucide-react";
