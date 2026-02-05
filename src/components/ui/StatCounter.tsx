@@ -53,10 +53,10 @@ export function StatCounter({
       transition={{ duration: 0.5 }}
       className="text-center"
     >
-      <div className="stat-number">
+      <div className="text-3xl md:text-4xl font-bold text-white">
         {prefix}{count.toLocaleString()}{suffix}
       </div>
-      <div className="stat-label">{label}</div>
+      <div className="text-sm text-white/80">{label}</div>
     </motion.div>
   );
 }

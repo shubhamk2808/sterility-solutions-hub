@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Clock, Headphones, FileCheck, CheckCircle, Zap, Building2, Factory, FlaskConical, Microscope, Wind, Flame, Radiation, Award, Users, Globe, Play } from "lucide-react";
+import { ArrowRight, Shield, Clock, Headphones, FileCheck, CheckCircle, Zap, Building2, Factory, FlaskConical, Microscope, Wind, Flame, Radiation, Award, Users, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -109,89 +109,106 @@ export default function Index() {
   return (
     <Layout>
       {/* Hero Section - Image-First Design */}
-      <section className="relative min-h-[85vh] flex flex-col overflow-hidden">
-        {/* Full Hero Image - Visible and Prominent */}
-        <div className="absolute inset-0">
-          <img 
-            src={heroImage} 
-            alt="Professional medical sterilization facility with advanced equipment" 
-            className="w-full h-full object-cover object-center" 
-          />
-          {/* Subtle gradient overlay - less blocking */}
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-transparent to-transparent lg:from-foreground/60" />
-        </div>
-        
-        {/* Content positioned at bottom-left */}
-        <div className="container-custom relative z-10 mt-auto pb-16 pt-32">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl"
-          >
-            <div className="mb-4">
-              <TrustBadges variant="compact" />
-            </div>
-            
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-background mb-4">
-              Certified Medical{" "}
-              <span className="text-gradient">Sterilization</span>{" "}
-              Services & Products
-            </h1>
-            
-            <p className="text-base md:text-lg text-background/90 mb-6 max-w-xl">
-              Ensuring sterility assurance and regulatory compliance for healthcare organizations 
-              through certified sterilization services and validated products worldwide.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-3 mb-6">
-              <Button asChild size="lg" className="text-base">
-                <Link to="/contact" className="flex items-center gap-2">
-                  Request a Quote <ArrowRight className="h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="text-base border-background/40 text-background hover:bg-background/10">
-                <Link to="/services">View Our Services</Link>
-              </Button>
-            </div>
+      <section className="relative bg-background overflow-hidden">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[85vh] py-12 lg:py-0">
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="order-2 lg:order-1"
+            >
+              <div className="mb-6">
+                <TrustBadges variant="compact" />
+              </div>
+              
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-foreground mb-6">
+                Certified Medical{" "}
+                <span className="text-gradient">Sterilization</span>{" "}
+                Services & Products
+              </h1>
+              
+              <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl">
+                Ensuring sterility assurance and regulatory compliance for healthcare organizations 
+                through certified sterilization services and validated products worldwide.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <Button asChild size="lg" className="text-base">
+                  <Link to="/contact" className="flex items-center gap-2">
+                    Request a Quote <ArrowRight className="h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button asChild variant="secondary" size="lg" className="text-base">
+                  <Link to="/services">View Our Services</Link>
+                </Button>
+              </div>
 
-            {/* Search bar */}
-            <div className="hidden md:block max-w-md">
-              <GlobalSearch variant="standalone" />
-            </div>
-          </motion.div>
-        </div>
+              {/* Search bar */}
+              <div className="hidden md:block max-w-md">
+                <GlobalSearch variant="standalone" />
+              </div>
 
-        {/* Stats Bar at Bottom - Full Width */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="relative z-10 bg-foreground/80 backdrop-blur-md border-t border-background/10"
-        >
-          <div className="container-custom py-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-              {[
-                { value: "25+", label: "Years Experience" },
-                { value: "99%", label: "Client Satisfaction" },
-                { value: "10M+", label: "Products Sterilized" },
-                { value: "24/7", label: "Expert Support" },
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="text-xl md:text-2xl font-bold text-background">{stat.value}</div>
-                  <div className="text-xs md:text-sm text-background/70">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
+              {/* Stats Row */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-10 pt-8 border-t border-border">
+                {[
+                  { value: "25+", label: "Years Experience" },
+                  { value: "99%", label: "Client Satisfaction" },
+                  { value: "10M+", label: "Products Sterilized" },
+                  { value: "24/7", label: "Expert Support" },
+                ].map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                    className="text-center sm:text-left"
+                  >
+                    <div className="text-2xl md:text-3xl font-bold text-primary">{stat.value}</div>
+                    <div className="text-xs md:text-sm text-muted-foreground">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="order-1 lg:order-2 relative"
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src={heroImage} 
+                  alt="Professional medical sterilization facility with advanced equipment" 
+                  className="w-full h-[300px] sm:h-[400px] lg:h-[550px] object-cover" 
+                />
+                {/* Subtle gradient overlay for depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
+              </div>
+              
+              {/* Floating Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="absolute -bottom-4 -left-4 lg:-left-8 bg-card border border-border rounded-xl p-4 shadow-lg"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Shield className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-foreground">ISO Certified</div>
+                    <div className="text-xs text-muted-foreground">FDA Registered</div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Logo Marquee - Client Trust */}
@@ -361,8 +378,8 @@ export default function Index() {
         </div>
         <div className="container-custom relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Trusted by Healthcare Leaders Worldwide</h2>
-            <p className="text-primary-foreground/80 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Trusted by Healthcare Leaders Worldwide</h2>
+            <p className="text-white/80 max-w-2xl mx-auto">
               Our track record speaks for itself. We've helped thousands of organizations achieve and maintain sterility assurance.
             </p>
           </div>
@@ -414,7 +431,7 @@ export default function Index() {
         title="Ready to Ensure Compliance & Safety?"
         subtitle="Contact our team today to discuss your sterilization requirements and receive a customized quote."
         primaryCTA={{ label: "Contact Our Team", href: "/contact" }}
-        secondaryCTA={{ label: "Download Brochure", href: "/resources" }}
+        secondaryCTA={{ label: "Download Brochure", href: "/resources", download: true }}
         variant="gradient"
       />
     </Layout>
