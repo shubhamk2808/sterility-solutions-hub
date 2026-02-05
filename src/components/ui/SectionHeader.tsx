@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -9,15 +10,16 @@ interface SectionHeaderProps {
   className?: string;
 }
 
-export function SectionHeader({ 
+export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(({ 
   badge, 
   title, 
   subtitle, 
   align = "center",
   className 
-}: SectionHeaderProps) {
+}, ref) => {
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -46,4 +48,6 @@ export function SectionHeader({
       )}
     </motion.div>
   );
-}
+});
+
+SectionHeader.displayName = "SectionHeader";
