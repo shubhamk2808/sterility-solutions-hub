@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Clock, Headphones, FileCheck, CheckCircle, Zap, Building2, Factory, FlaskConical, Microscope, Wind, Flame, Radiation, Award, Users, Globe } from "lucide-react";
+import { ArrowRight, Shield, Clock, Headphones, FileCheck, CheckCircle, Zap, Building2, Factory, FlaskConical, Microscope, Wind, Flame, Radiation, Award, Users, Globe, BadgeCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -14,6 +14,7 @@ import { TestimonialsSection } from "@/components/ui/TestimonialCard";
 import { ServiceComparisonTool } from "@/components/ui/ServiceComparisonTool";
 import { ClientLogosSection, LogoMarquee } from "@/components/ui/ClientLogosSection";
 import { GlobalSearch } from "@/components/ui/GlobalSearch";
+import { ParticleBackground, FloatingInfoCard, ConnectorDots } from "@/components/ui/ParticleBackground";
 
 import heroImage from "@/assets/hero-medical-facility.jpg";
 import eoImage from "@/assets/services/eo-sterilization.jpg";
@@ -108,9 +109,19 @@ const clientLogos = [
 export default function Index() {
   return (
     <Layout>
-      {/* Hero Section - Image-First Design */}
+      {/* Hero Section - Enhanced with Particles */}
       <section className="relative bg-background overflow-hidden">
-        <div className="container-custom">
+        {/* Subtle dot pattern background */}
+        <div className="absolute inset-0 overflow-hidden">
+          <ConnectorDots />
+        </div>
+        
+        {/* Canvas particle animation */}
+        <div className="absolute inset-0 overflow-hidden">
+          <ParticleBackground />
+        </div>
+
+        <div className="container-custom relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[85vh] py-12 lg:py-0">
             {/* Left Content */}
             <motion.div
@@ -172,7 +183,7 @@ export default function Index() {
               </div>
             </motion.div>
 
-            {/* Right Image */}
+            {/* Right Image with Floating Cards */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -189,23 +200,30 @@ export default function Index() {
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
               </div>
               
-              {/* Floating Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="absolute -bottom-4 -left-4 lg:-left-8 bg-card border border-border rounded-xl p-4 shadow-lg"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Shield className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-foreground">ISO Certified</div>
-                    <div className="text-xs text-muted-foreground">FDA Registered</div>
-                  </div>
-                </div>
-              </motion.div>
+              {/* Floating Info Cards */}
+              <FloatingInfoCard
+                icon={<Shield className="h-4 w-4 text-primary" />}
+                title="ISO Certified"
+                subtitle="13485 & 11135"
+                position="bottom-left"
+                delay={0.6}
+              />
+              
+              <FloatingInfoCard
+                icon={<BadgeCheck className="h-4 w-4 text-primary" />}
+                title="FDA Registered"
+                subtitle="Facility"
+                position="top-right"
+                delay={0.8}
+              />
+              
+              <FloatingInfoCard
+                icon={<Sparkles className="h-4 w-4 text-primary" />}
+                title="Quality Assured"
+                subtitle="99.9% Sterility"
+                position="bottom-right"
+                delay={1.0}
+              />
             </motion.div>
           </div>
         </div>
