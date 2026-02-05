@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, forwardRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 interface StatCounterProps {
@@ -9,15 +9,16 @@ interface StatCounterProps {
   duration?: number;
 }
 
-export function StatCounter({ 
+export const StatCounter = forwardRef<HTMLDivElement, StatCounterProps>(({ 
   value, 
   suffix = "", 
   prefix = "",
   label, 
   duration = 2 
-}: StatCounterProps) {
+}, forwardedRef) => {
   const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
+  const internalRef = useRef<HTMLDivElement>(null);
+  const ref = (forwardedRef as React.RefObject<HTMLDivElement>) || internalRef;
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const hasAnimated = useRef(false);
 
@@ -59,4 +60,6 @@ export function StatCounter({
       <div className="text-sm text-white/80">{label}</div>
     </motion.div>
   );
-}
+});
+
+StatCounter.displayName = "StatCounter";
