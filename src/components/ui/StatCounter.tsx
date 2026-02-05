@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, forwardRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 interface StatCounterProps {
@@ -9,16 +9,15 @@ interface StatCounterProps {
   duration?: number;
 }
 
-export const StatCounter = forwardRef<HTMLDivElement, StatCounterProps>(({ 
+export function StatCounter({ 
   value, 
   suffix = "", 
   prefix = "",
   label, 
   duration = 2 
-}, forwardedRef) => {
+}: StatCounterProps) {
   const [count, setCount] = useState(0);
-  const internalRef = useRef<HTMLDivElement>(null);
-  const ref = (forwardedRef as React.RefObject<HTMLDivElement>) || internalRef;
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const hasAnimated = useRef(false);
 
@@ -46,20 +45,21 @@ export const StatCounter = forwardRef<HTMLDivElement, StatCounterProps>(({
   }, [isInView, value, duration]);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
       className="text-center"
     >
-      <div className="text-3xl md:text-4xl font-bold text-white">
-        {prefix}{count.toLocaleString()}{suffix}
-      </div>
-      <div className="text-sm text-white/80">{label}</div>
-    </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="text-3xl md:text-4xl font-bold text-white">
+          {prefix}{count.toLocaleString()}{suffix}
+        </div>
+        <div className="text-sm text-white/80">{label}</div>
+      </motion.div>
+    </div>
   );
-});
-
-StatCounter.displayName = "StatCounter";
+}
