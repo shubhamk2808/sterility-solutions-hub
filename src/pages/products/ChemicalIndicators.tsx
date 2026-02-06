@@ -2,8 +2,8 @@ import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { AnimatedCard } from "@/components/ui/AnimatedCard";
 import { CTASection } from "@/components/ui/CTASection";
+import { PageHero } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FlaskConical, CheckCircle, Download, ArrowRight, Package, FileText } from "lucide-react";
 
@@ -48,40 +48,20 @@ const specifications = [
 export default function ChemicalIndicators() {
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative py-20 md:py-24 bg-gradient-to-br from-primary/10 via-background to-secondary/5">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Link to="/products" className="inline-flex items-center text-primary hover:underline mb-4">
-              ← Back to Products
-            </Link>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center">
-                <FlaskConical className="w-7 h-7 text-primary" />
-              </div>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Chemical <span className="text-gradient">Indicators</span>
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mb-6">
-              Visual indicators for monitoring sterilization parameters. Available in Types 1-6 
-              per ISO 11140-1 for steam, EO, and dry heat sterilization processes.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg">
-                <Link to="/contact">Request Quote <ArrowRight className="ml-2 w-4 h-4" /></Link>
-              </Button>
-              <Button variant="outline" size="lg">
-                <Download className="mr-2 w-4 h-4" /> Download Catalog
-              </Button>
-            </div>
-          </motion.div>
+      <PageHero
+        badge="Chemical Indicators"
+        title={<>Chemical <span className="text-gradient">Indicators</span></>}
+        description="Visual indicators for monitoring sterilization parameters. Available in Types 1-6 per ISO 11140-1 for steam, EO, and dry heat sterilization processes."
+      >
+        <div className="flex flex-wrap gap-4 justify-center">
+          <Button asChild size="lg">
+            <Link to="/contact">Request Quote <ArrowRight className="ml-2 w-4 h-4" /></Link>
+          </Button>
+          <Button variant="outline" size="lg">
+            <Download className="mr-2 w-4 h-4" /> Download Catalog
+          </Button>
         </div>
-      </section>
+      </PageHero>
 
       {/* Products Grid */}
       <section className="section-padding bg-white">

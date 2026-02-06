@@ -2,8 +2,8 @@ import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { AnimatedCard } from "@/components/ui/AnimatedCard";
 import { CTASection } from "@/components/ui/CTASection";
+import { PageHero } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Package, CheckCircle, Download, ArrowRight, FileText, ShoppingCart } from "lucide-react";
 
@@ -52,40 +52,20 @@ const features = [
 export default function Accessories() {
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative py-20 md:py-24 bg-gradient-to-br from-indigo-500/10 via-background to-medical-blue/5">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Link to="/products" className="inline-flex items-center text-medical-blue hover:underline mb-4">
-              ← Back to Products
-            </Link>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-14 h-14 bg-indigo-500/10 rounded-xl flex items-center justify-center">
-                <Package className="w-7 h-7 text-indigo-500" />
-              </div>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Sterilization <span className="text-gradient">Accessories</span>
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mb-6">
-              Complete range of sterilization wraps, pouches, labels, and containers to 
-              support your sterile processing operations.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg">
-                <Link to="/contact">Request Quote <ArrowRight className="ml-2 w-4 h-4" /></Link>
-              </Button>
-              <Button variant="outline" size="lg">
-                <Download className="mr-2 w-4 h-4" /> Download Catalog
-              </Button>
-            </div>
-          </motion.div>
+      <PageHero
+        badge="Sterilization Accessories"
+        title={<>Sterilization <span className="text-gradient">Accessories</span></>}
+        description="Complete range of sterilization wraps, pouches, labels, and containers to support your sterile processing operations."
+      >
+        <div className="flex flex-wrap gap-4 justify-center">
+          <Button asChild size="lg">
+            <Link to="/contact">Request Quote <ArrowRight className="ml-2 w-4 h-4" /></Link>
+          </Button>
+          <Button variant="outline" size="lg">
+            <Download className="mr-2 w-4 h-4" /> Download Catalog
+          </Button>
         </div>
-      </section>
+      </PageHero>
 
       {/* Features Bar */}
       <section className="py-6 bg-indigo-50 border-y border-indigo-200">
