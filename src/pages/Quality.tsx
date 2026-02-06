@@ -2,6 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { AnimatedCard } from "@/components/ui/AnimatedCard";
 import { CTASection } from "@/components/ui/CTASection";
+import { PageHero } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { 
@@ -96,37 +97,20 @@ const documentationProvided = [
 export default function Quality() {
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-medical-blue/5 via-background to-medical-teal/5">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <span className="inline-block px-4 py-2 bg-medical-blue/10 text-medical-blue rounded-full text-sm font-medium mb-6">
-              Quality & Certifications
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Committed to{" "}
-              <span className="text-gradient">Quality Excellence</span>
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              Our comprehensive quality management system ensures every sterilization process 
-              meets the highest standards of safety, efficacy, and regulatory compliance.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg">
-                <Download className="mr-2 w-4 h-4" /> Download Quality Statement
-              </Button>
-              <Button variant="outline" size="lg">
-                View Certifications
-              </Button>
-            </div>
-          </motion.div>
+      <PageHero
+        badge="Quality & Certifications"
+        title={<>Committed to{" "}<span className="text-gradient">Quality Excellence</span></>}
+        description="Our comprehensive quality management system ensures every sterilization process meets the highest standards of safety, efficacy, and regulatory compliance."
+      >
+        <div className="flex flex-wrap justify-center gap-4">
+          <Button size="lg">
+            <Download className="mr-2 w-4 h-4" /> Download Quality Statement
+          </Button>
+          <Button variant="outline" size="lg">
+            View Certifications
+          </Button>
         </div>
-      </section>
+      </PageHero>
 
       {/* Quality Policy */}
       <section className="section-padding bg-white">

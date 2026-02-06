@@ -2,6 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { AnimatedCard } from "@/components/ui/AnimatedCard";
 import { CTASection } from "@/components/ui/CTASection";
+import { PageHero } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { 
@@ -102,28 +103,11 @@ const caseStudies = [
 export default function Resources() {
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-              Resource Center
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Technical Resources & <span className="text-gradient">Documentation</span>
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Access brochures, datasheets, whitepapers, and educational materials 
-              to support your sterilization decisions and regulatory compliance.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        badge="Resource Center"
+        title={<>Technical Resources & <span className="text-gradient">Documentation</span></>}
+        description="Access brochures, datasheets, whitepapers, and educational materials to support your sterilization decisions and regulatory compliance."
+      />
 
       {/* Resource Categories */}
       <section className="section-padding bg-background">

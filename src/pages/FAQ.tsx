@@ -1,6 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { CTASection } from "@/components/ui/CTASection";
+import { PageHero } from "@/components/ui/PageHero";
 import { FAQSection, generalFAQs, eoFAQs, steamFAQs, gammaFAQs } from "@/components/ui/FAQSection";
 import { motion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -28,40 +29,22 @@ export default function FAQ() {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-              Help Center
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Frequently Asked <span className="text-gradient">Questions</span>
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              Find answers to common questions about our sterilization services, 
-              processes, and compliance requirements.
-            </p>
-            
-            {/* Search */}
-            <div className="relative max-w-xl mx-auto">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-              <Input
-                type="text"
-                placeholder="Search for answers..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-12 h-14 text-lg rounded-xl"
-              />
-            </div>
-          </motion.div>
+      <PageHero
+        badge="Help Center"
+        title={<>Frequently Asked <span className="text-gradient">Questions</span></>}
+        description="Find answers to common questions about our sterilization services, processes, and compliance requirements."
+      >
+        <div className="relative max-w-xl mx-auto">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+          <Input
+            type="text"
+            placeholder="Search for answers..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-12 h-14 text-lg rounded-xl"
+          />
         </div>
-      </section>
+      </PageHero>
 
       {/* FAQ Content */}
       <section className="section-padding bg-background">

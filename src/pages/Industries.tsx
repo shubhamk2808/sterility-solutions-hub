@@ -2,6 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { AnimatedCard } from "@/components/ui/AnimatedCard";
 import { CTASection } from "@/components/ui/CTASection";
+import { PageHero } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -99,29 +100,11 @@ const whyChoose = [
 export default function Industries() {
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-              Industries We Serve
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Tailored Solutions for{" "}
-              <span className="text-gradient">Every Industry</span>
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              From hospitals to medical device manufacturers, we understand the unique 
-              sterilization challenges each industry faces and provide targeted solutions.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        badge="Industries We Serve"
+        title={<>Tailored Solutions for{" "}<span className="text-gradient">Every Industry</span></>}
+        description="From hospitals to medical device manufacturers, we understand the unique sterilization challenges each industry faces and provide targeted solutions."
+      />
 
       {/* Industry Sections */}
       <section className="section-padding bg-white">

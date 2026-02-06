@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { AnimatedCard } from "@/components/ui/AnimatedCard";
+import { PageHero } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -136,28 +137,11 @@ export default function Contact() {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative py-16 md:py-20 bg-gradient-to-br from-medical-blue/5 via-background to-medical-teal/5">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <span className="inline-block px-4 py-2 bg-medical-blue/10 text-medical-blue rounded-full text-sm font-medium mb-6">
-              Get in Touch
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Contact <span className="text-gradient">BiosteriMed</span>
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Have questions about our sterilization services or products? 
-              Our team is ready to help.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        badge="Get in Touch"
+        title={<>Contact <span className="text-gradient">BiosteriMed</span></>}
+        description="Have questions about our sterilization services or products? Our team is ready to help."
+      />
 
       {/* Contact Form & Info */}
       <section className="section-padding bg-white">
