@@ -3,6 +3,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { CTASection } from "@/components/ui/CTASection";
 import { AnimatedCard } from "@/components/ui/AnimatedCard";
+import { PageHero } from "@/components/ui/PageHero";
 import { motion } from "framer-motion";
 import { Search, Filter, Download, Phone, Shield, Truck, Award, HeadphonesIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -64,44 +65,27 @@ export default function Products() {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-              Product Catalog
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Sterilization{" "}
-              <span className="text-gradient">Monitoring Products</span>
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              Comprehensive range of chemical indicators, biological indicators, and sterilization 
-              accessories for validating and monitoring your sterilization processes.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                <Input
-                  type="text"
-                  placeholder="Search products..."
-                  className="pl-10"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </div>
-              <Button variant="outline">
-                <Filter className="mr-2 w-4 h-4" /> Filter
-              </Button>
-            </div>
-          </motion.div>
+      <PageHero
+        badge="Product Catalog"
+        title={<>Sterilization{" "}<span className="text-gradient">Monitoring Products</span></>}
+        description="Comprehensive range of chemical indicators, biological indicators, and sterilization accessories for validating and monitoring your sterilization processes."
+      >
+        <div className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+            <Input
+              type="text"
+              placeholder="Search products..."
+              className="pl-10"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          <Button variant="outline">
+            <Filter className="mr-2 w-4 h-4" /> Filter
+          </Button>
         </div>
-      </section>
+      </PageHero>
 
       {/* Features Bar */}
       <section className="py-8 bg-white border-y border-border">

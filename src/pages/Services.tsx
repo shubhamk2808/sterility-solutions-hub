@@ -2,6 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { CTASection } from "@/components/ui/CTASection";
 import { AnimatedCard } from "@/components/ui/AnimatedCard";
+import { PageHero } from "@/components/ui/PageHero";
 import { ServiceComparisonTool } from "@/components/ui/ServiceComparisonTool";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -93,29 +94,11 @@ const capabilities = [
 export default function Services() {
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-              Our Services
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Comprehensive{" "}
-              <span className="text-gradient">Sterilization Services</span>
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              From ethylene oxide to gamma irradiation, we offer a full range of validated sterilization 
-              services to meet your regulatory requirements and product specifications.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        badge="Our Services"
+        title={<>Comprehensive{" "}<span className="text-gradient">Sterilization Services</span></>}
+        description="From ethylene oxide to gamma irradiation, we offer a full range of validated sterilization services to meet your regulatory requirements and product specifications."
+      />
 
       {/* Services Grid - Enhanced with images */}
       <section className="section-padding bg-background">
