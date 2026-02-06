@@ -1,21 +1,17 @@
 import { Layout } from "@/components/layout/Layout";
-import { motion } from "framer-motion";
+import { PageHero } from "@/components/ui/PageHero";
 
 export default function Terms() {
   return (
     <Layout>
-      <section className="section-padding bg-gradient-to-br from-medical-blue/5 via-background to-medical-teal/5">
+      <PageHero
+        badge="Legal"
+        title="Terms of Service"
+        description="Last updated: January 2024"
+      />
+      <section className="section-padding bg-background">
         <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto"
-          >
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Terms of Service
-            </h1>
-            <p className="text-muted-foreground mb-8">Last updated: January 2024</p>
+          <div className="max-w-4xl mx-auto">
 
             <div className="prose prose-slate max-w-none">
               <div className="bg-white rounded-xl p-8 shadow-sm space-y-8">
@@ -172,7 +168,7 @@ export default function Terms() {
                 </section>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </Layout>

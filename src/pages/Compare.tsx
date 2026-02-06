@@ -2,34 +2,17 @@ import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ServiceComparisonTool } from "@/components/ui/ServiceComparisonTool";
 import { CTASection } from "@/components/ui/CTASection";
+import { PageHero } from "@/components/ui/PageHero";
 import { motion } from "framer-motion";
 
 export default function Compare() {
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-              Comparison Tool
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Compare{" "}
-              <span className="text-gradient">Sterilization Methods</span>
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Use our interactive comparison tool to evaluate EO, Steam, and Gamma sterilization 
-              methods side-by-side. Find the optimal solution for your products and requirements.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        badge="Comparison Tool"
+        title={<>Compare <span className="text-gradient">Sterilization Methods</span></>}
+        description="Use our interactive comparison tool to evaluate EO, Steam, and Gamma sterilization methods side-by-side. Find the optimal solution for your products and requirements."
+      />
 
       {/* Full Comparison Tool */}
       <section className="section-padding bg-background">
