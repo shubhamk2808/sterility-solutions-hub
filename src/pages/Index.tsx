@@ -297,6 +297,20 @@ export default function Index() {
             subtitle="Compare sterilization technologies side-by-side to determine the best solution for your products and materials."
           />
           <ServiceComparisonTool maxFeatures={6} />
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-center mt-10"
+          >
+            <Button asChild size="lg">
+              <Link to="/services/compare" className="flex items-center gap-2">
+                Compare & Build Your Quote <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
 
