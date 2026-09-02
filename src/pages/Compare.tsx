@@ -2,6 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ServiceComparisonTool } from "@/components/ui/ServiceComparisonTool";
 import { CTASection } from "@/components/ui/CTASection";
+import { QuoteEstimator } from "@/components/ui/QuoteEstimator";
 import { PageHero } from "@/components/ui/PageHero";
 import { motion } from "framer-motion";
 
@@ -18,6 +19,18 @@ export default function Compare() {
       <section className="section-padding bg-background">
         <div className="container-custom">
           <ServiceComparisonTool showHeader={false} />
+        </div>
+      </section>
+
+      {/* Interactive Quote Estimator */}
+      <section className="section-padding bg-surface">
+        <div className="container-custom">
+          <SectionHeader
+            badge="Instant Estimate"
+            title="Build Your Sterilization Quote"
+            subtitle="Choose a method, your equipment type, and batch volume to see an indicative price range in real time."
+          />
+          <QuoteEstimator />
         </div>
       </section>
 
